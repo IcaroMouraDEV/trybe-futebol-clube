@@ -11,11 +11,12 @@ class UserModel extends Model {
 
 UserModel.init({
   id: { type: DataTypes.INTEGER, primaryKey: true },
-  userName: DataTypes.STRING,
+  username: DataTypes.STRING,
   role: DataTypes.STRING,
   email: DataTypes.STRING,
   password: DataTypes.STRING,
 }, {
+  tableName: 'users',
   underscored: true,
   sequelize: db,
   timestamps: false,
