@@ -1,11 +1,9 @@
 import { compareSync } from 'bcryptjs';
-import * as jwt from 'jsonwebtoken';
 import UserModel from '../database/models/UserModel';
 import IError from '../interfaces/IError';
 import ILogin from '../interfaces/Ilogin';
 import IUser from '../interfaces/IUser';
-
-const JWT_SECRET = process.env.JWT_SECRET || 'jwt_secret';
+import { generateToken } from '../utils/token';
 
 export default class LoginService {
   static async login(user: ILogin): Promise<IError> {
@@ -19,15 +17,7 @@ export default class LoginService {
       return { error: true, message: 'Incorrect email or password' };
     }
 
-    const token = jwt.sign(
-      { userId: login.id },
-      JWT_SECRET as string,
-      {
-        expiresIn: '3d',
-      },
-    );
-
-    return { error: false, message: token };
+    return { error: false, message: generateToken(login.id) };
   }
 
   static async getUserRole(id: number): Promise<{ role: string }> {
