@@ -81,19 +81,20 @@ const countGoals = (homeMatches: IMatch[], awayMatches: IMatch[]) => {
 const generateTeamStats = (team: ITeam, matches: IMatch[]): IStat => {
   const homeMatches = matches.filter((match) => match.homeTeam === team.id);
   const awayMatches = matches.filter((match) => match.awayTeam === team.id);
+  const filtredMatches = [...awayMatches, ...homeMatches];
   const { points, drawns, losses, victories } = getData(homeMatches, awayMatches);
   const { goalsFavor, goalsOwn } = countGoals(homeMatches, awayMatches);
   return {
     name: team.teamName,
     totalPoints: points,
-    totalGames: matches.length,
+    totalGames: filtredMatches.length,
     totalVictories: victories,
     totalDraws: drawns,
     totalLosses: losses,
     goalsFavor,
     goalsOwn,
     goalsBalance: goalsFavor - goalsOwn,
-    efficiency: Number(((points / (matches.length * 3)) * 100).toFixed(2)),
+    efficiency: Number(((points / (filtredMatches.length * 3)) * 100).toFixed(2)),
   };
 };
 
@@ -104,14 +105,14 @@ const homeTeamStats = (team: ITeam, matches: IMatch[]): IStat => {
   return {
     name: team.teamName,
     totalPoints: points,
-    totalGames: matches.length,
+    totalGames: homeMatches.length,
     totalVictories: victories,
     totalDraws: drawns,
     totalLosses: losses,
     goalsFavor,
     goalsOwn,
     goalsBalance: goalsFavor - goalsOwn,
-    efficiency: Number(((points / (matches.length * 3)) * 100).toFixed(2)),
+    efficiency: Number(((points / (homeMatches.length * 3)) * 100).toFixed(2)),
   };
 };
 
@@ -122,14 +123,14 @@ const awayTeamStats = (team: ITeam, matches: IMatch[]): IStat => {
   return {
     name: team.teamName,
     totalPoints: points,
-    totalGames: matches.length,
+    totalGames: awayMatches.length,
     totalVictories: victories,
     totalDraws: drawns,
     totalLosses: losses,
     goalsFavor,
     goalsOwn,
     goalsBalance: goalsFavor - goalsOwn,
-    efficiency: Number(((points / (matches.length * 3)) * 100).toFixed(2)),
+    efficiency: Number(((points / (awayMatches.length * 3)) * 100).toFixed(2)),
   };
 };
 
