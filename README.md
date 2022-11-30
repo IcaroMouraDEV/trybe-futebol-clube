@@ -25,7 +25,8 @@ Na sua máquina você deve ter:
 <summary><strong>🐳 Rodando o projeto no Docker</strong></summary><br />
  
   1. No diretório `app/` rode o comando `docker-compose up -d`.
-  2. Acesse o site em `localhost:3000`
+  2. Acesse o site em `localhost:3000`.
+ 
 <details>
 
 
