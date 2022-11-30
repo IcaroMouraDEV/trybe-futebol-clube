@@ -21,25 +21,13 @@ Na sua máquina você deve ter:
 
 </details>
 
-<details id='Variaveis-de-ambiente'>
-<summary><strong> ⚙️ Variáveis de ambiente </strong></summary><br />
+<details>
+<summary><strong>🐳 Rodando o projeto no Docker</strong></summary><br />
+ 
+  1. No diretório `app/` rode o comando `docker-compose up -d`.
+  2. Acesse o site em `localhost:3000`
+<details>
 
-  **No diretório `app/backend/` renomeie o arquivo `.env.example` para `.env` e configure os valores de acordo com o cenário do seu ambiente (credenciais de banco de dados, secrets desejadas e etc)**. Isso vai permitir que você inicialize a aplicação fora do _container_ e ela se conecte com seu banco local caso deseje.
- > `./app/backend/.env.example`
-  ```txt
-  JWT_SECRET=jwt_secret
-  APP_PORT=3001
-  DB_USER=seu_user
-  DB_PASS=sua_senha
-  DB_HOST=localhost
-  DB_PORT=3306
-  ```
-
-  **⚠️ Variáveis de ambiente além das especificadas acima não são suportadas, pois não são esperadas pelo avaliador do projeto. ⚠️**
-
-  **⚠️ Não defina variável de ambiente para o nome do banco, o mesmo deve se manter com o nome `TRYBE_FUTEBOL_CLUBE`. ⚠️**
-
-</details>
 
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto.
