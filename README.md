@@ -1,3 +1,4 @@
+<details>
 <summary><strong> ⚠️ Configurações mínimas para execução do projeto</strong></summary><br />
 
 Na sua máquina você deve ter:
