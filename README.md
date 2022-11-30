@@ -37,6 +37,40 @@ Esse projeto é composto de 4 seções principais:
 3. Partidas
 4. Placar
 
+## Seção 1: Users e Login
+
+<details>
+  <summary><strong> Introdução </strong></summary>
+
+- A rota utilizada deve ser (`/login`);
+
+- A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados:
+  - O campo `email` deve receber um email válido;
+  - O Campo `password` deve ter mais de 6 caracteres.
+
+- O body da requisição deve conter o seguinte formato:
+  ```json
+  {
+    "email": "string",
+    "password": "string"
+  }
+  ```
+</details>
+
+<details>
+  <summary><strong> Requisitos </strong></summary>
+ 
+  Endpoint `/login`
+  - Rota do tipo `POST`;
+
+  - Se o login foi feito com sucesso, o resultado retornado deverá ser similar ao exibido abaixo, com um status http `200`:
+  ```json
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTI3MTg5fQ.XS_9AA82iNoiVaASi0NtJpqOQ_gHSHhxrpIdigiT-fc" // Aqui deve ser o token gerado pelo backend.
+  }
+  ```
+</details>
+
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto.
 É essencial que você preencha esse documento por conta própria, ok?
