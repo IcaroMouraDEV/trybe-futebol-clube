@@ -1,3 +1,5 @@
+# Orientações
+
 <details>
 <summary><strong> ⚠️ Configurações mínimas para execução do projeto</strong></summary><br />
 
