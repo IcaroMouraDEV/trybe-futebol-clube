@@ -162,7 +162,7 @@ Esse projeto é composto de 4 seções principais:
 
   -  A resposta deve ser de status `200` com um `json` contendo o retorno no seguinte modelo:
 
-    ```json
+  ```json
     [
       {
         "id": 1,
@@ -194,7 +194,7 @@ Esse projeto é composto de 4 seções principais:
         }
       }
     ]
-    ```
+  ```
 
   - É possivel filtrar todas as partidas em andamento;
 
