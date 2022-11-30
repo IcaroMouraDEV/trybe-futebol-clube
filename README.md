@@ -27,8 +27,15 @@ Na sua máquina você deve ter:
   1. No diretório `app/` rode o comando `docker-compose up -d`.
   2. Acesse o site em `localhost:3000`.
  
-<details>
+</details>
 
+# Sobre os Requisitos
+
+Esse projeto é composto de 4 seções principais:
+1. Users e Login
+2. Times
+3. Partidas
+4. Placar
 
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto.
