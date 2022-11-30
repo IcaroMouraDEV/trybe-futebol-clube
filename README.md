@@ -105,8 +105,46 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Endpoints </strong></summary>
 
+### Endpoint `/teams`
+
+  - Rota tipo `GET`
+
+  -  A resposta deve ser de status `200` com um `json` contendo o retorno no seguinte modelo:
+
+```json
+[
+  {
+    "id": 1,
+    "teamName": "Avaí/Kindermann"
+  },
+  {
+    "id": 2,
+    "teamName": "Bahia"
+  },
+  {
+    "id": 3,
+    "teamName": "Botafogo"
+  },
+  ...
+]
+```
+
+### Endpoint `/teams/:id`
+
+  - Rota tipo `GET`
+
+  -  A resposta deve ser de status `200` com um `json` contendo o retorno no seguinte modelo:
+
+```json
+{
+  "id": 5,
+  "teamName": "Cruzeiro"
+}
+```
 
 </details>
+
+
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto.
 É essencial que você preencha esse documento por conta própria, ok?
