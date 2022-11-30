@@ -202,7 +202,7 @@ Esse projeto é composto de 4 seções principais:
     ex: `matches?inProgress=true`
   
   Exemplo de retorno da requisição:
-  
+
   ```json
   [
     {
@@ -300,7 +300,7 @@ Esse projeto é composto de 4 seções principais:
 
   - Não é possível inserir uma partida com um time que não existe na tabela teams;
 
-  - Caso algum dos times não esteja cadastrado no banco de dados, retorna com um status `404,` a seguinte mensagem:
+  - Caso algum dos times não esteja cadastrado no banco de dados, retorna com um status `404`, a seguinte mensagem:
 
   ```json
   { "message": "There is no team with such id!" }
@@ -357,6 +357,109 @@ Esse projeto é composto de 4 seções principais:
   ```json
   { "message": "Updated" }
   ```
+
+</details>
+
+## Seção 4: Leaderboards (placares)
+
+<details>
+  <summary><strong> Introdução </strong></summary>
+
+    - `Classificação`: Posição na classificação;
+    - `Time`: Nome do time;
+    - `P`: Total de Pontos;
+    - `J`: Total de Jogos;
+    - `V`: Total de Vitórias;
+    - `E`: Total de Empates;
+    - `D`: Total de Derrotas;
+    - `GP`: Gols marcados a favor;
+    - `GC`: Gols sofridos;
+    - `SG`: Saldo total de gols;
+    - `%`: Aproveitamento do time.
+
+  - Todas as regras de negócio e cálculos necessários são realizados no back-end. A aplicação front-end apenas renderiza essas informações.
+
+  - Para calcular o `Total de Pontos`, foi considerado que:
+
+    - O time `vitorioso`: marcará +3 pontos;
+    - O time `perdedor`: marcará 0 pontos;
+    - Em caso de `empate`: ambos os times marcam +1 ponto.
+
+  - Para o campo `Aproveitamento do time (%)`, que é a porcentagem de jogos ganhos, foi usada a seguinte fórmula: `[P / (J * 3)] * 100`, onde:
+
+    - `P`: Total de Pontos;
+    - `J`: Total de Jogos.
+
+    Obs.: O resultado foi limitado a `duas casas decimais`.
+
+  - Para calcular `Saldo de Gols` foi usada a seguinte fórmula: `GP - GC`, onde:
+
+    - `GP`: Gols marcados a favor;
+    - `GC`: Gols sofridos.
+
+  - O foi ordenado de forma decrescente, levando em consideração a quantidade de pontos que o time acumulou. Em caso de empate no `Total de Pontos`, foi levado em consideração os seguintes critérios para desempate:
+
+  **Ordem para desempate**
+
+  1º Total de Vitórias;
+  2º Saldo de gols;
+  3º Gols a favor;
+  4º Gols sofridos.
+
+
+  ⚠️ **Atenção:** ⚠️
+
+  - A Tabela renderiza **somente** as PARTIDAS que já foram FINALIZADAS!
+
+**Exemplo de retorno esperado:**
+
+```json
+[
+  {
+    "name": "Palmeiras",
+    "totalPoints": 13,
+    "totalGames": 5,
+    "totalVictories": 4,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 17,
+    "goalsOwn": 5,
+    "goalsBalance": 12,
+    "efficiency": 86.67
+  },
+  {
+    "name": "Corinthians",
+    "totalPoints": 12,
+    "totalGames": 5,
+    "totalVictories": 4,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 12,
+    "goalsOwn": 3,
+    "goalsBalance": 9,
+    "efficiency": 80
+  },
+  {
+    "name": "Santos",
+    "totalPoints": 11,
+    "totalGames": 5,
+    "totalVictories": 3,
+    "totalDraws": 2,
+    "totalLosses": 0,
+    "goalsFavor": 12,
+    "goalsOwn": 6,
+    "goalsBalance": 6,
+    "efficiency": 73.33
+  },
+  ...
+]
+```
+
+  - Os endpoints dessa seção, irão alimentar uma tabela idêntica ao exemplo abaixo no front-end:
+
+    | Classificação | Time        | P   | J   | V   | E   | D   | GP  | GC  | SG  | %    |
+    | ------------- | ----------- | --- | --- | --- | --- | --- | --- | --- | --- | ---- |
+    | 1             | Ferroviária | 38  | 15  | 12  | 2   | 1   | 44  | 13  | 31  | 84.4 |
 
 </details>
 
