@@ -202,6 +202,7 @@ Esse projeto é composto de 4 seções principais:
     ex: `matches?inProgress=true`
   
   Exemplo de retorno da requisição:
+  
   ```json
   [
     {
@@ -234,6 +235,7 @@ Esse projeto é composto de 4 seções principais:
     }
   ]
   ```
+
   - Essa requisição pode usar `query string` para definir o parâmetro:
     ex: `matches?inProgress=false`
 
@@ -271,7 +273,90 @@ Esse projeto é composto de 4 seções principais:
   ]
   ```
 
+### Endpoint `/matches`
 
+  - Rota tipo `POST`
+
+  - A partida só pode ser criada com token JWT validado;
+
+  - O corpo da requisição terá o seguinte formato:
+
+  ```json
+  {
+    "homeTeam": 16, // O valor deve ser o id do time
+    "awayTeam": 8, // O valor deve ser o id do time
+    "homeTeamGoals": 2,
+    "awayTeamGoals": 2,
+  }
+  ```
+
+  - Não é possível inserir uma partida em que o `homeTeam` e o `awayTeam` sejam iguais, por exemplo: Barcelona x Barcelona;
+
+  - Caso isso ocorra, retorna com um status `422`, a seguinte mensagem:
+
+  ```json
+  { "message": "It is not possible to create a match with two equal teams" }
+  ```
+
+  - Não é possível inserir uma partida com um time que não existe na tabela teams;
+
+  - Caso algum dos times não esteja cadastrado no banco de dados, retorna com um status `404,` a seguinte mensagem:
+
+  ```json
+  { "message": "There is no team with such id!" }
+  ```
+
+  - Não é possível inserir uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, retorna com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+  - Caso a partida seja inserida com sucesso, deve-se retornar os dados da partida, com _status_ `201`:
+
+  ```json
+  {
+    "id": 1,
+    "homeTeam": 16,
+    "homeTeamGoals": 2,
+    "awayTeam": 8,
+    "awayTeamGoals": 2,
+    "inProgress": true,
+  }
+  ```
+
+### Endpoint `/matches/:id/finish`
+
+  - Rota tipo `PATCH`
+
+  - Será recebido o `id` pelo parâmetro da URL;
+
+  - Retorna com um status `200`, a seguinte mensagem:
+
+  ```json
+  { "message": "Finished" }
+  ```
+
+### 28 - Endpoint `/matches/:id`
+
+  - Rota tipo `PATCH`;
+
+  - Será recebido o `id` pelo parâmetro da URL;
+
+  - O corpo da requisição terá o seguinte formato:
+  ```json
+  {
+    "homeTeamGoals": 3,
+    "awayTeamGoals": 1
+  }
+  ```
+  - Retorna com um status `200`, a seguinte mensagem:
+
+  ```json
+  { "message": "Updated" }
+  ```
 
 </details>
 
