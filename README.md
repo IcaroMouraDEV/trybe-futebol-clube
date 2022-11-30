@@ -58,7 +58,7 @@ Esse projeto é composto de 4 seções principais:
 </details>
 
 <details>
-  <summary><strong> Requisitos </strong></summary>
+  <summary><strong> Endpoints </strong></summary>
 
 ### Endpoint `/login`
   
@@ -93,6 +93,20 @@ Esse projeto é composto de 4 seções principais:
   ```
 </details>
 
+## Seção 2: Times
+
+<details>
+  <summary><strong> Introdução </strong></summary>
+
+- A rota utilizada deve ser (`/teams`);
+
+</details>
+
+<details>
+  <summary><strong> Endpoints </strong></summary>
+
+
+</details>
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto.
 É essencial que você preencha esse documento por conta própria, ok?
