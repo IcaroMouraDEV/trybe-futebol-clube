@@ -125,7 +125,7 @@ Esse projeto é composto de 4 seções principais:
     "id": 3,
     "teamName": "Botafogo"
   },
-  //...
+  ...
 ]
 ```
 
