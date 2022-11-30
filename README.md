@@ -144,6 +144,138 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
+## Seção 3: Partidas
+
+<details>
+  <summary><strong> Introdução </strong></summary>
+
+  - A rota utilizada deve ser (`/matches`);
+
+</details>
+
+<details>
+  <summary><strong> Endpoints </strong></summary>
+
+### Endpoint `/matches`
+
+  - A rota deve ser um `GET` e retorna uma lista de partidas;
+
+  - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro.
+
+    Exemplo de retorno:
+    ```json
+    [
+      {
+        "id": 1,
+        "homeTeam": 16,
+        "homeTeamGoals": 1,
+        "awayTeam": 8,
+        "awayTeamGoals": 1,
+        "inProgress": false,
+        "teamHome": {
+          "teamName": "São Paulo"
+        },
+        "teamAway": {
+          "teamName": "Grêmio"
+        }
+      },
+      ...
+      {
+        "id": 41,
+        "homeTeam": 16,
+        "homeTeamGoals": 2,
+        "awayTeam": 9,
+        "awayTeamGoals": 0,
+        "inProgress": true,
+        "teamHome": {
+          "teamName": "São Paulo"
+        },
+        "teamAway": {
+          "teamName": "Internacional"
+        }
+      }
+    ]
+    ```
+
+  - É possivel filtrar todas as partidas em andamento;
+
+  - Essa requisição pode usar `query string` para definir o parâmetro:
+    ex: `matches?inProgress=true`
+  
+  Exemplo de retorno da requisição:
+  ```json
+  [
+    {
+      "id": 41,
+      "homeTeam": 16,
+      "homeTeamGoals": 2,
+      "awayTeam": 9,
+      "awayTeamGoals": 0,
+      "inProgress": true,
+      "teamHome": {
+        "teamName": "São Paulo"
+      },
+      "teamAway": {
+        "teamName": "Internacional"
+      }
+    },
+    {
+      "id": 42,
+      "homeTeam": 6,
+      "homeTeamGoals": 1,
+      "awayTeam": 1,
+      "awayTeamGoals": 0,
+      "inProgress": true,
+      "teamHome": {
+        "teamName": "Ferroviária"
+      },
+      "teamAway": {
+        "teamName": "Avaí/Kindermann"
+      }
+    }
+  ]
+  ```
+  - Essa requisição pode usar `query string` para definir o parâmetro:
+    ex: `matches?inProgress=false`
+
+  Exemplo de retorno da requisição:
+  ```json
+  [
+    {
+      "id": 1,
+      "homeTeam": 16,
+      "homeTeamGoals": 1,
+      "awayTeam": 8,
+      "awayTeamGoals": 1,
+      "inProgress": false,
+      "teamHome": {
+        "teamName": "São Paulo"
+      },
+      "teamAway": {
+        "teamName": "Grêmio"
+      }
+    },
+    {
+      "id": 2,
+      "homeTeam": 9,
+      "homeTeamGoals": 1,
+      "awayTeam": 14,
+      "awayTeamGoals": 1,
+      "inProgress": false,
+      "teamHome": {
+        "teamName": "Internacional"
+      },
+      "teamAway": {
+        "teamName": "Santos"
+      }
+    }
+  ]
+  ```
+
+
+
+</details>
+
 
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto.
