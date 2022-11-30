@@ -158,9 +158,9 @@ Esse projeto é composto de 4 seções principais:
 
 ### Endpoint `/matches`
 
-  - A rota deve ser um `GET` e retorna uma lista de partidas;
+  - Rota tipo `GET`
 
-  - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro.
+  -  A resposta deve ser de status `200` com um `json` contendo o retorno no seguinte modelo:
 
     Exemplo de retorno:
     ```json
