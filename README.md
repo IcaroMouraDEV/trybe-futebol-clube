@@ -59,8 +59,9 @@ Esse projeto é composto de 4 seções principais:
 
 <details>
   <summary><strong> Requisitos </strong></summary>
- 
-  Endpoint `/login`
+
+### Endpoint `/login`
+  
   - Rota do tipo `POST`;
 
   - Se o login foi feito com sucesso, o resultado retornado deverá ser similar ao exibido abaixo, com um status http `200`:
@@ -68,6 +69,27 @@ Esse projeto é composto de 4 seções principais:
   {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTI3MTg5fQ.XS_9AA82iNoiVaASi0NtJpqOQ_gHSHhxrpIdigiT-fc" // Aqui deve ser o token gerado pelo backend.
   }
+  ```
+
+  - Se o login não tiver o campo "email" ou "password", o resultado retornado deverá ser a mensagem abaixo, com um status http `400`:
+  ```json
+    { "message": "All fields must be filled" }
+  ```
+
+  - Se o login tiver o "email" ou "senha" **inválido**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
+  ```json
+    { "message": "Incorrect email or password" }
+  ```
+
+### Endpoint `/login/validate`
+
+  - Rota tipo `GET`
+  
+  - Recebe um `header` com parâmetro `authorization`, onde ficará armazenado o token gerado no login;
+
+  A resposta deve ser de status `200` com um `objeto` contendo a `role` do *user*:
+  ```json
+    { "role": "admin" }
   ```
 </details>
 
