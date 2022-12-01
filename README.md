@@ -30,7 +30,7 @@ Na sua máquina você deve ter:
  
 </details>
 
-# Sobre os Requisitos
+# Sobre os Endpoints
 
 Esse projeto é composto de 4 seções principais:
 1. Users e Login
